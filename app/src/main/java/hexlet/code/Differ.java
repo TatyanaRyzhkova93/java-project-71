@@ -1,10 +1,7 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 
-import java.io.File;
-import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.SortedMap;
@@ -25,8 +22,8 @@ public class Differ implements Runnable {
     private String format = "stylish";
 
     public String generate(String path1, String path2) throws Exception {
-        Map<String, Object> sorted1 = readFileJson(path1);
-        Map<String, Object> sorted2 = readFileJson(path2);
+        Map<String, Object> sorted1 = Parser.readFile(path1);
+        Map<String, Object> sorted2 = Parser.readFile(path2);
         Comparator<String> comparator = getComparator();
         SortedMap<String, Object> result = new TreeMap<>(comparator);
         for (var entry : sorted1.entrySet()) {
@@ -61,12 +58,6 @@ public class Differ implements Runnable {
         }
     }
 
-    private static Map<String, Object> readFileJson(String filepath) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        File file1 = Path.of(filepath).toAbsolutePath().toFile();
-        Map<String, Object> map = mapper.readValue(file1, Map.class);
-        return map;
-    }
 
     private static Comparator<String> getComparator() throws RuntimeException {
         return  (s1, s2) -> {
