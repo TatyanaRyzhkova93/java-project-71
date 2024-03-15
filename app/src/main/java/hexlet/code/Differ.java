@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import picocli.CommandLine;
-
 import java.util.Comparator;
 import java.util.Map;
 import java.util.SortedMap;
@@ -17,7 +16,7 @@ public class Differ implements Runnable {
     private String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")
     private String filepath2;
-    @CommandLine.Option(names = {"-f, --format"}, paramLabel = "format",
+    @CommandLine.Option(names = {"-f, --format"}, paramLabel = "format", defaultValue = "stylish",
             description = "output format [default: stylish]")
     private String format = "stylish";
 
@@ -29,8 +28,8 @@ public class Differ implements Runnable {
         for (var entry : sorted1.entrySet()) {
             var key = entry.getKey();
             var value = entry.getValue();
-            if (sorted2.containsKey(key)) {
-                if (value.equals(sorted2.get(key))) {
+            if (sorted2 == null ? false : sorted2.containsKey(key)) {
+                if (value == null ? sorted2.get(key) == null : value.equals(sorted2.get(key))) {
                     result.put("  " + key, value);
                 } else {
                     result.put("- " + key, value);
@@ -41,12 +40,12 @@ public class Differ implements Runnable {
                 result.put("- " + key, value);
             }
         }
-        for (var entry : sorted2.entrySet()) {
-            result.put("+ " + entry.getKey(), entry.getValue());
+        if (sorted2 != null) {
+            for (var entry : sorted2.entrySet()) {
+                result.put("+ " + entry.getKey(), entry.getValue());
+            }
         }
-
-        return result.toString().replace(", ", "\n").replace("=", ": ")
-                .replace("{", "\n{\n").replace("}", "\n}");
+        return Formatter.createFormatter(format, result);
     }
 
     @Override
@@ -70,4 +69,5 @@ public class Differ implements Runnable {
             }
         };
     }
+
 }
