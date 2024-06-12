@@ -25,7 +25,7 @@ public class Differ implements Runnable {
         return generate(path1, path2, format);
     }
 
-    public String generate(String path1, String path2, String nameFormat) throws Exception {
+    public static String generate(String path1, String path2, String nameFormat) throws Exception {
         Map<String, Object> sorted1 = Parser.readFile(path1);
         Map<String, Object> sorted2 = Parser.readFile(path2);
         Comparator<String> comparator = getComparator();
