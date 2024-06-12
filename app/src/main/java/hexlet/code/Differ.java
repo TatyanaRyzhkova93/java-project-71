@@ -12,15 +12,20 @@ import java.util.TreeMap;
         mixinStandardHelpOptions = true
 )
 public class Differ implements Runnable {
+
     @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")
     private String filepath2;
-    @CommandLine.Option(names = {"-f, --format"}, paramLabel = "format", defaultValue = "stylish",
+    @CommandLine.Option(names = {"-f", "--format"},
             description = "output format [default: stylish]")
-    private String format = "stylish";
+    String format = "stylish";
 
     public String generate(String path1, String path2) throws Exception {
+        return generate(path1, path2, format);
+    }
+
+    public String generate(String path1, String path2, String nameFormat) throws Exception {
         Map<String, Object> sorted1 = Parser.readFile(path1);
         Map<String, Object> sorted2 = Parser.readFile(path2);
         Comparator<String> comparator = getComparator();
@@ -45,13 +50,13 @@ public class Differ implements Runnable {
                 result.put("+ " + entry.getKey(), entry.getValue());
             }
         }
-        return Formatter.createFormatter(format, result);
+        return Formatter.createFormatter(nameFormat, result);
     }
 
     @Override
     public void run() {
         try {
-            System.out.println(generate(filepath1, filepath2));
+            System.out.println(generate(filepath1, filepath2, format));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

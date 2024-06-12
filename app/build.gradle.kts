@@ -19,7 +19,6 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
 }
-
 tasks.test {
     useJUnitPlatform()
 }

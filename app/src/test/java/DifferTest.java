@@ -24,7 +24,6 @@ public class DifferTest {
         file2yaml = "src/test/resources/file2.yaml";
         file3yaml = "src/test/resources/file3.yaml";
         file4yaml = "src/test/resources/file4.yaml";
-
     }
     @Test
     public void testGenerateJsonEmptyFile() throws Exception {
