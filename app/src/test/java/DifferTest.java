@@ -17,6 +17,7 @@ public class DifferTest {
     private static String answer;
     private static String answer2;
     private static String answer3;
+    private static final String FORMAT_STYLISH = "stylish";
     @BeforeAll
     public static void beforeAll() {
         file1 = "src/test/resources/file1.json";
@@ -70,32 +71,32 @@ public class DifferTest {
     }
     @Test
     public void testGenerateJsonEmptyFile() throws Exception {
-        String diff = Differ.generate(file3, file2, "stylish");
+        String diff = Differ.generate(file3, file2, FORMAT_STYLISH);
         assertEquals(answer2, diff);
     }
     @Test
     public void testGenerateYamlEmptyFile() throws Exception {
-        String diff = Differ.generate(file3yaml, file2yaml, "stylish");
+        String diff = Differ.generate(file3yaml, file2yaml, FORMAT_STYLISH);
         assertEquals(answer2, diff);
     }
     @Test
     public void testGenerateJson() throws Exception {
-        String diff = Differ.generate(file3, file4, "stylish");
+        String diff = Differ.generate(file3, file4, FORMAT_STYLISH);
         assertEquals(answer, diff);
     }
     @Test
     public void emptyJson() throws Exception {
-        String diff = Differ.generate(file1, file1, "stylish");
+        String diff = Differ.generate(file1, file1, FORMAT_STYLISH);
         assertEquals(answer3, diff);
     }
     @Test
     public void testGenerateYaml() throws Exception {
-        String diff = Differ.generate(file3yaml, file4yaml, "stylish");
+        String diff = Differ.generate(file3yaml, file4yaml, FORMAT_STYLISH);
         assertEquals(answer, diff);
     }
     @Test
     public void emptyJsonYaml() throws Exception {
-        String diff = Differ.generate(file1yaml, file1yaml, "stylish");
+        String diff = Differ.generate(file1yaml, file1yaml, FORMAT_STYLISH);
         assertEquals(answer3, diff);
     }
 }
