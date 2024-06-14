@@ -33,13 +33,13 @@ public class FormatterTest {
     }
     @Test
     public void testGenerateYaml() throws Exception {
-        String diff = new Differ().generate(file3yaml, file4yaml, FORMAT_PLANE);
+        String diff = Differ.generate(file3yaml, file4yaml, FORMAT_PLANE);
         assertEquals(answer, diff);
     }
 
     @Test
     public void testGenerateJson() throws Exception {
-        String diff = new Differ().generate(file3, file4, FORMAT_PLANE);
+        String diff = Differ.generate(file3, file4, FORMAT_PLANE);
         assertEquals(answer, diff);
     }
 }
