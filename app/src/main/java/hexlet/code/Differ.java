@@ -21,9 +21,6 @@ public class Differ implements Runnable {
             description = "output format [default: stylish]")
     private static String format;
 
-    public static String generate(String path1, String path2) throws Exception {
-        return generate(path1, path2, format);
-    }
 
     public static String generate(String path1, String path2, String nameFormat) throws Exception {
         Map<String, Object> sorted1 = Parser.readFile(path1);

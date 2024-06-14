@@ -26,7 +26,7 @@ public class JsonTest {
                 + "\"+ obj1\":{\"nestedKey\":\"value\",\"isNested\":true},"
                 + "\"- setting1\":\"Some value\",\"+ setting1\":\"Another value\","
                 + "\"- setting2\":200,\"+ setting2\":300,\"- setting3\":true,\"+ setting3\":\"none\"}";
-        String diff = new Differ().generate(file1, file2, FORMAT_JSON);
+        String diff = Differ.generate(file1, file2, FORMAT_JSON);
         assertEquals(answer, diff);
     }
 }
