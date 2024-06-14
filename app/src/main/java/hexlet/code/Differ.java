@@ -12,17 +12,17 @@ import java.util.TreeMap;
         mixinStandardHelpOptions = true
 )
 public class Differ implements Runnable {
-
+    public static final String FORMAT_STYLISH = "stylish";
     @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")
     private String filepath2;
-    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish",
+    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = FORMAT_STYLISH,
             description = "output format [default: stylish]")
     private static String format;
 
     public static String generate(String path1, String path2) throws Exception {
-        return generate(path1, path2, format);
+        return generate(path1, path2, FORMAT_STYLISH);
     }
 
     public static String generate(String path1, String path2, String nameFormat) throws Exception {
