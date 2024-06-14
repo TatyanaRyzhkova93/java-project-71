@@ -17,9 +17,9 @@ public class Differ implements Runnable {
     private String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")
     private String filepath2;
-    @CommandLine.Option(names = {"-f", "--format"},
+    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish",
             description = "output format [default: stylish]")
-    private static String format = "stylish";
+    private static String format;
 
     public static String generate(String path1, String path2) throws Exception {
         return generate(path1, path2, format);

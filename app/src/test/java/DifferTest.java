@@ -70,32 +70,32 @@ public class DifferTest {
     }
     @Test
     public void testGenerateJsonEmptyFile() throws Exception {
-        String diff = new Differ().generate(file3, file2);
+        String diff = Differ.generate(file3, file2, "stylish");
         assertEquals(answer2, diff);
     }
     @Test
     public void testGenerateYamlEmptyFile() throws Exception {
-        String diff = new Differ().generate(file3yaml, file2yaml);
+        String diff = Differ.generate(file3yaml, file2yaml, "stylish");
         assertEquals(answer2, diff);
     }
     @Test
     public void testGenerateJson() throws Exception {
-        String diff = new Differ().generate(file3, file4);
+        String diff = Differ.generate(file3, file4, "stylish");
         assertEquals(answer, diff);
     }
     @Test
     public void emptyJson() throws Exception {
-        String diff = new Differ().generate(file1, file1);
+        String diff = Differ.generate(file1, file1, "stylish");
         assertEquals(answer3, diff);
     }
     @Test
     public void testGenerateYaml() throws Exception {
-        String diff = new Differ().generate(file3yaml, file4yaml);
+        String diff = Differ.generate(file3yaml, file4yaml, "stylish");
         assertEquals(answer, diff);
     }
     @Test
     public void emptyJsonYaml() throws Exception {
-        String diff = new Differ().generate(file1yaml, file1yaml);
+        String diff = Differ.generate(file1yaml, file1yaml, "stylish");
         assertEquals(answer3, diff);
     }
 }
