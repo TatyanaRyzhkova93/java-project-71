@@ -13,6 +13,7 @@ import java.util.TreeMap;
 )
 public class Differ implements Runnable {
     public static final String FORMAT_STYLISH = "stylish";
+    public static final String FORMAT_PLAIN = "plain";
     @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")

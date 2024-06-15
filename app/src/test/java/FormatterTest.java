@@ -2,6 +2,7 @@ import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static hexlet.code.Differ.FORMAT_PLAIN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FormatterTest {
@@ -10,7 +11,6 @@ public class FormatterTest {
     private static String file3yaml;
     private static String file4yaml;
     private static String answer;
-    private static final String FORMAT_PLANE = "plane";
     @BeforeAll
     public static void beforeAll() {
         file3 = "src/test/resources/file3.json";
@@ -33,13 +33,13 @@ public class FormatterTest {
     }
     @Test
     public void testGenerateYaml() throws Exception {
-        String diff = Differ.generate(file3yaml, file4yaml, FORMAT_PLANE);
+        String diff = Differ.generate(file3yaml, file4yaml, FORMAT_PLAIN);
         assertEquals(answer, diff);
     }
 
     @Test
     public void testGenerateJson() throws Exception {
-        String diff = Differ.generate(file3, file4, FORMAT_PLANE);
+        String diff = Differ.generate(file3, file4, FORMAT_PLAIN);
         assertEquals(answer, diff);
     }
 }

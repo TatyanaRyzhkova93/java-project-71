@@ -15,7 +15,6 @@ public class Stylish implements Format {
                     .append("\n");
         }
         stb.append("}");
-       // System.out.println(stb.toString());
         return stb.toString();
     }
 }
