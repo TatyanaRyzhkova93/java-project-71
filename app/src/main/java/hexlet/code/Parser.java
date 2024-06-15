@@ -12,7 +12,8 @@ public class Parser {
     public static Map<String, Object> readFile(String filepath) throws Exception {
         ObjectMapper mapper = createMapper(filepath);
         File file1 = Path.of(filepath).toAbsolutePath().toFile();
-        return mapper.readValue(file1, new TypeReference<Map<String, Object>>() { });
+        return mapper.reader().forType(new TypeReference<Map<String, Object>>() { }).readValue(file1);
+      //  return mapper.readValue(file1, new TypeReference<Map<String, Object>>() { });
     }
     private static ObjectMapper createMapper(String name) {
 
