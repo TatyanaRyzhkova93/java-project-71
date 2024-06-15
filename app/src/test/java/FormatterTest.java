@@ -17,7 +17,7 @@ public class FormatterTest {
         file4 = "src/test/resources/file4.json";
         file3yaml = "src/test/resources/file3.yaml";
         file4yaml = "src/test/resources/file4.yaml";
-        answer = "\nProperty 'chars2' was updated. From [complex value] to false\n"
+        answer = "Property 'chars2' was updated. From [complex value] to false\n"
                 + "Property 'checked' was updated. From false to true\n"
                 + "Property 'default' was updated. From null to [complex value]\n"
                 + "Property 'id' was updated. From 45 to null\n"

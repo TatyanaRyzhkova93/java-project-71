@@ -7,7 +7,7 @@ public class FormatFactory {
 
     public Format getFormat(String name) {
         if (name != null && name.equalsIgnoreCase(FORMAT_PLAIN)) {
-            return new Plane();
+            return new Plain();
         } else if (name != null && name.equalsIgnoreCase(FORMAT_JSON)) {
             return new JsonFormatter();
         }
