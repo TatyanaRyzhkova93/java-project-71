@@ -15,7 +15,7 @@ public class Parser {
         File file1 = Path.of(filepath).toAbsolutePath().toFile();
         int i = filepath.lastIndexOf('.');
         String ext = i > 0 ? filepath.substring(i + 1) : "";
-        if (ext.equalsIgnoreCase("yaml")) {
+        if (ext.equalsIgnoreCase("yaml") || ext.equalsIgnoreCase("yml")) {
             InputStream inputStream = new FileInputStream(file1);
             Yaml yaml = new Yaml();
             Map<String, Object> data = yaml.load(inputStream);
