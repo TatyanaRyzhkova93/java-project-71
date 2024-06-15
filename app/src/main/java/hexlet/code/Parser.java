@@ -2,7 +2,7 @@ package hexlet.code;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -21,7 +21,7 @@ public class Parser {
         if (ext.equalsIgnoreCase("json")) {
             return new ObjectMapper();
         } else if (ext.equalsIgnoreCase("yaml")) {
-            return new YAMLMapper();
+            return new ObjectMapper(new YAMLFactory());
         }
         return new ObjectMapper();
     }
