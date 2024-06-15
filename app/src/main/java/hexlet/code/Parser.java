@@ -2,27 +2,27 @@ package hexlet.code;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Map;
 
 public class Parser {
     public static Map<String, Object> readFile(String filepath) throws Exception {
-        ObjectMapper mapper = createMapper(filepath);
         File file1 = Path.of(filepath).toAbsolutePath().toFile();
-        return mapper.readValue(file1, new TypeReference<Map<String, Object>>() { });
-    }
-    private static ObjectMapper createMapper(String name) {
-
-        int i = name.lastIndexOf('.');
-        String ext = i > 0 ? name.substring(i + 1) : "";
-        if (ext.equalsIgnoreCase("json")) {
-            return new ObjectMapper();
-        } else if (ext.equalsIgnoreCase("yaml")) {
-            return new YAMLMapper();
+        int i = filepath.lastIndexOf('.');
+        String ext = i > 0 ? filepath.substring(i + 1) : "";
+        if (ext.equalsIgnoreCase("yaml")) {
+            InputStream inputStream = new FileInputStream(file1);
+            Yaml yaml = new Yaml();
+            Map<String, Object> data = yaml.load(inputStream);
+            return data;
+        } else  {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file1, new TypeReference<Map<String, Object>>() { });
         }
-        return new ObjectMapper();
     }
 }
