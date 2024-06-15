@@ -21,7 +21,7 @@ public class Plain implements Format {
     }
 
     @Override
-    public String generateEquals(Map<String, Object> map) {
+    public final String generateEquals(Map<String, Object> map) {
         HashMap<String, Object> hashMap = new HashMap<>(map);
         StringBuilder stb = new StringBuilder();
         for (var entry : map.entrySet()) {

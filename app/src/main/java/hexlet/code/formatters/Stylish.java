@@ -5,7 +5,7 @@ import java.util.Map;
 public class Stylish implements Format {
 
     @Override
-    public String generateEquals(Map<String, Object> map) {
+    public final String generateEquals(Map<String, Object> map) {
         StringBuilder stb = new StringBuilder();
         stb.append("{\n");
         for (Map.Entry<String, Object> m : map.entrySet()) {

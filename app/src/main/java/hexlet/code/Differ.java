@@ -15,9 +15,9 @@ public class Differ implements Runnable {
     public static final String FORMAT_STYLISH = "stylish";
     public static final String FORMAT_PLAIN = "plain";
     @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    private String filepath1;
+    private static String filepath1;
     @CommandLine.Parameters(index = "1", paramLabel = "filepath2", description = "path to first file")
-    private String filepath2;
+    private static String filepath2;
     @CommandLine.Option(names = {"-f", "--format"}, defaultValue = FORMAT_STYLISH,
             description = "output format [default: stylish]")
     private static String format;
@@ -55,7 +55,7 @@ public class Differ implements Runnable {
     }
 
     @Override
-    public void run() {
+    public final void run() {
         try {
             System.out.println(generate(filepath1, filepath2, format));
         } catch (Exception e) {

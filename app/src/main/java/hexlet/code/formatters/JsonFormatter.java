@@ -8,7 +8,7 @@ import java.util.Map;
 public class JsonFormatter implements Format {
 
     @Override
-    public String generateEquals(Map<String, Object> map) {
+    public final String generateEquals(Map<String, Object> map) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.writeValueAsString(map);
