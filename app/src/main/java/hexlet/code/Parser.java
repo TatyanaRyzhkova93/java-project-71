@@ -14,12 +14,15 @@ public class Parser {
         Map<String, Object> map = mapper.readValue(file1, Map.class);
         return map;
     }
-    private static ObjectMapper createMapper(String filepath) {
-        if (filepath.endsWith("json")) {
+    private static ObjectMapper createMapper(String name) {
+
+        int i = name.lastIndexOf('.');
+        String ext = i > 0 ? name.substring(i + 1) : "";
+        if (ext.equalsIgnoreCase("json")) {
             return new ObjectMapper();
-        } else if (filepath.endsWith("yaml")) {
+        } else if (ext.equalsIgnoreCase("yaml")) {
             return new YAMLMapper();
         }
-        return null;
+        return new ObjectMapper();
     }
 }

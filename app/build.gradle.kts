@@ -18,6 +18,7 @@ dependencies {
     annotationProcessor("info.picocli:picocli-codegen:4.7.5")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2")
+    implementation("commons-io:commons-io:2.6")
 }
 tasks.test {
     useJUnitPlatform()
