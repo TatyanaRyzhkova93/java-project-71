@@ -5,6 +5,9 @@ public class FormatFactory {
     private static final String FORMAT_JSON = "json";
 
     public Format getFormat(String name) {
+        if (name == null) {
+            return new Stylish();
+        }
         if (name.equalsIgnoreCase(FORMAT_PLANE)) {
             return new Plane();
         } else if (name.equalsIgnoreCase(FORMAT_JSON)) {
